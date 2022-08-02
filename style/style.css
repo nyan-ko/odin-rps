@@ -1,0 +1,43 @@
+body {
+    margin: 0px;
+}
+
+.heading {
+    padding: 80px 25vw;
+}
+
+.heading .flex-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading img {
+    width: 100%;
+}
+
+.img-container {
+    max-width: 256px;
+}
+
+.button-container {
+    padding: 20px 33vw;
+}
+
+.button-container .flex-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    margin: 0px;
+    border-radius: 0px;
+    border-width: 1px;
+    width: 100px;
+}
+
+p {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
