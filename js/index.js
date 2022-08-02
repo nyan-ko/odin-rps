@@ -53,14 +53,17 @@ function capitalize(str) {
     return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-function tryPlaying() {
-    let pChoice = prompt("Enter your choice:");
+function tryPlaying(pChoice) {
     if (!pChoice || pChoice.length < 2) {
         return null;
     }
 
+    setImage(pChoice, "#player");
     pChoice = capitalize(pChoice);
+
     let cChoice = getComputerChoice();
+    setImage(cChoice, "#computer");
+
     let result = getWinner(pChoice, cChoice);
 
     switch (result) {
@@ -75,17 +78,33 @@ function tryPlaying() {
     }
 }
 
-function game() {
-    console.log("Let's play Rock Paper Scissors!");
-    for (let i = 0; i < 5; i++) {
-        let result = tryPlaying();
-        if (!result) {
-            alert("Invalid input entered. Skipping game.");
-            i--;
-            continue;
-        }
-        alert(result);
+function setImage(choice, who) {
+    const img = document.querySelector(who);
+    switch (choice.toLowerCase()) {
+        case "rock":
+            img.setAttribute("src", "style/img/rock.jpg");
+            img.setAttribute("alt", "Rock!");
+            break;
+        case "paper":
+            img.setAttribute("src", "style/img/paper.jpg");
+            img.setAttribute("alt", "Paper!");
+            break;
+        case "scissors":
+            img.setAttribute("src", "style/img/scissors.jpg");
+            img.setAttribute("alt", "Scissors!");
+            break;
+        default:
+            img.setAttribute("src", "style/img/question_mark.png");
+            img.setAttribute("alt", "Waiting...");
+            break;
     }
 }
 
-game();
+function onClick(e) {
+    tryPlaying(this.getAttribute("id"));
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    button.addEventListener('click', onClick)
+});
